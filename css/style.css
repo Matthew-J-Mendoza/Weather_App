@@ -1,0 +1,73 @@
+body {
+    background: url(../images/SunsetBackground.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+    background-color: rgba(17, 0, 255, 0.014);
+  }
+  .searchBTN{
+      border-radius: 0;
+  }
+  .searchBar{
+      border-radius: 0;
+      background-color: rgba(255, 255, 255, 0.822);
+      border-color: rgba(160, 160, 160, 0);
+      
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:black;
+    opacity: 1; /* Firefox */
+  }
+  .fa-star{
+      font-size: 2rem;
+      cursor: pointer;
+  }
+  .fa-star:hover{
+      color: yellow;
+  }
+  .DPOpac{
+    background-color: rgba(255, 255, 255, 0) !important;
+    border-color: rgba(160, 160, 160, 0) !important;
+    color: white !important;
+    font-size: 1.2rem;
+  }
+ 
+.DPOpac:hover{
+    background-color: rgba(255, 255, 255, 0) !important;
+    border-color: rgba(160, 160, 160, 0) !important;
+    color: white !important;
+    font-size: 1.2rem;
+    
+}
+.DPOpac:active{
+    background-color: rgba(255, 255, 255, 0) !important;
+    border-color: rgba(160, 160, 160, 0) !important;
+    color: white !important;
+    font-size: 1.2rem;
+    
+}
+.DPOpac:focus{
+        border-color: rgba(160, 160, 160, 0) !important;
+    border-color: rgba(160, 160, 160, 0) !important;
+    color: white !important;
+    font-size: 1.2rem;
+    
+}
+.boxes{
+    border: white solid 3px;
+    cursor: pointer;
+}
+.boxes:hover{
+    background-color: rgba(0, 0, 0, 0.11);
+}
+.curentTemp{
+    font-size: 5rem;
+}
+.dropdown-item:hover{
+    color: #B47D0F;
+}
+.lowTemp{
+    opacity: .8;
+}
