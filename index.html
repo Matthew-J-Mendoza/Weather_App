@@ -60,15 +60,15 @@
                     </div>
                     <div class="col-3">
                         <div class="row">
-                            <div class="col-3">
-                                <div class="far fa-star mt-1"></div>
+                            <div class="col-2">
+                                <div class="far fa-star mt-2"></div>
                             </div>
                             <div class="col-9">
                                 <div class="dropdown">
                                     <button class="btn btn-light DPOpac dropdown-toggle" type="button"
                                         id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
-                                        Favorites
+                                        Favorites Cities
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                         <button class="dropdown-item" type="button">Long Beach, CA</button>
@@ -86,40 +86,57 @@
                 <div class="row">
                     <div class="col-12 d-flex justify-content-end mb-4">
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control searchBar" type="search" placeholder="Search"
+                            <input id="searchBar" class="form-control searchBar" type="search" placeholder="Search"
                                 aria-label="Search">
-                            <button class="btn btn-secondary searchBTN" type="submit">
+                            <button id="searchBTN" class="btn btn-secondary searchBTN" type="button">
                                 <div class="fas fa-search"></div>
                             </button>
                         </form>
                     </div>
-                    <div class="col-6 text-right"></div>
-                    <div class="col-6 text-right">
-                        <p>Humidity</p>
-                    </div>
-                    <div class="col-12 text-right mb-4">
-                        <h5>50%</h5>
-                    </div>
-                    <div class="col-6 text-right"></div>
-                    <div class="col-6 text-right">
-                        <p>Chance of Rain</p>
-                    </div>
-                    <div class="col-12 text-right mb-4">
-                        <h5>10%</h5>
-                    </div>
-                    <div class="col-6 text-right"></div>
-                    <div class="col-6 text-right">
-                        <p>wind Speed</p>
-                    </div>
-                    <div class="col-12 text-right mb-4">
-                        <h5>5 mph</h5>
-                    </div>
-                    <div class="col-6 text-right"></div>
-                    <div class="col-6 text-right">
-                        <p>Air Pressure</p>
-                    </div>
-                    <div class="col-12 text-right mb-4">
-                        <h5>1018Pa</h5>
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="col-6 text-right d-flex justify-content-end">
+                                <img class="" src="./images/humidity.png" alt="" width="30rem">
+                            </div>
+                            <div class="col-6 text-left">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="col-6"></div>
+                            <div class="col-6 text-left  mb-4">
+                                <h5>50%</h5>
+                            </div>
+                            <div class="col-6 text-right d-flex justify-content-end">
+                                <img class="" src="./images/Chance_of_Rain.png" alt="" width="40rem">
+                            </div>
+                            <div class="col-6 text-left">
+                                <p>Chance of Rain</p>
+                            </div>
+                            <div class="col-6"></div>
+                            <div class="col-6 text-left  mb-4">
+                                <h5>10%</h5>
+                            </div>
+                            <div class="col-6 text-left d-flex justify-content-end">
+                                <img class="" src="./images/winds.png" alt="" width="40rem">
+                            </div>
+                            <div class="col-6 text-left">
+                                <p>wind Speed</p>
+                            </div>
+                            <div class="col-6"></div>
+                            <div class="col-6 text-left  mb-4">
+                                <h5>5 mph</h5>
+                            </div>
+                            <div class="col-6 text-right d-flex justify-content-end">
+                                <img class="" src="./images/air_pressure.png" alt="" width="30rem">
+                            </div>
+                            <div class="col-6 text-left">
+                                <p>Air Pressure</p>
+                            </div>
+                            <div class="col-6"></div>
+                            <div class="col-6 text-left  mb-4">
+                                <h5>1018Pa</h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -300,8 +317,8 @@
 
     <div class="container-fluid pt-5">
         <div class="row">
-            <div class="col-12 pl-5">
-                <p>5-Day Forecast</p>
+            <div class="col-12 pl-5 ">
+                <p class="forcast">5-Day Forecast</p>
             </div>
             <div class="col-12">
                 <div class="row d-flex justify-content-center">

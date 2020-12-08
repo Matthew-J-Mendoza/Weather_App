@@ -21,7 +21,7 @@ body {
     opacity: 1; /* Firefox */
   }
   .fa-star{
-      font-size: 2rem;
+      font-size: 1.5rem;
       cursor: pointer;
   }
   .fa-star:hover{
@@ -56,11 +56,12 @@ body {
     
 }
 .boxes{
-    border: white solid 3px;
+    border: #FFFFFF99 solid 3px;
     cursor: pointer;
 }
 .boxes:hover{
     background-color: rgba(0, 0, 0, 0.11);
+    border: white solid 3px;
 }
 .curentTemp{
     font-size: 5rem;
@@ -69,5 +70,8 @@ body {
     color: #B47D0F;
 }
 .lowTemp{
-    opacity: .8;
+    color: #FFFFFF99;
+}
+.forcast{
+    padding-left: 4.2%;
 }
