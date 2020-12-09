@@ -6,6 +6,7 @@ body {
     background-size: cover;
     color: white;
     background-color: rgba(17, 0, 255, 0.014);
+    font-size: 100%;
   }
   .searchBTN{
       border-radius: 0;
@@ -72,13 +73,19 @@ body {
 }
 .lowTemp{
     color: #FFFFFF99;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.highTemp{
+font-size: 1.5rem;
+font-weight: 700;
 }
 .forcast{
-    padding-left: 4.5%;
+    
     font-size: 1.7rem;
 }
 .forecastDate{
-    font-size: x-large;
+    font-size: 1.3rem;
 }
 .Location{
     font-size: 1.5rem;
@@ -94,8 +101,4 @@ body {
 .Measurement{
     font-weight: 500;
     font-size: 1.5rem;
-}
-.top-box{
-    padding-left:  7.5rem;
-    padding-right: 7.5rem ;
 }
