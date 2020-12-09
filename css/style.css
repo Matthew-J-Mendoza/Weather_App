@@ -64,7 +64,8 @@ body {
     border: white solid 3px;
 }
 .curentTemp{
-    font-size: 5rem;
+    font-size: 4rem;
+    font-weight: bolder;
 }
 .dropdown-item:hover{
     color: #B47D0F;
@@ -73,5 +74,9 @@ body {
     color: #FFFFFF99;
 }
 .forcast{
-    padding-left: 4.2%;
+    padding-left: 4.5%;
+    font-size: 1.7rem;
+}
+.forecastDate{
+    font-size: x-large;
 }
