@@ -102,3 +102,15 @@ font-weight: 700;
     font-weight: 500;
     font-size: 1.5rem;
 }
+.WeekdayTemp{
+    font-weight: 700;
+    font-size: 4rem;
+}
+.TimeoDay{
+    font-weight: 700;
+}
+#GoBack{
+    font-weight: 500;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

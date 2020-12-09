@@ -56,25 +56,64 @@ searchBTN.addEventListener('click', function(e){
 
 Day1.addEventListener('click',function(){
     // weekdayForecast('https://spreadsheets.google.com/feeds/list/1fOLTeJmKnZ_agfjH-qYr9VO7KfkXlUA7rKYBv86gwIo/1/public/full?alt=json');
-    weekdayForecast('../pages/5_Day_Forecast.html');
+    weekdayForecast(1);
 });
 Day2.addEventListener('click',function(){
-    weekdayForecast();
+    weekdayForecast(1);
 });
 Day3.addEventListener('click',function(){
-    weekdayForecast();
+    weekdayForecast(1);
 });
 Day4.addEventListener('click',function(){
-    weekdayForecast();
+    weekdayForecast(1);
 });
 Day5.addEventListener('click',function(){
-    weekdayForecast();
+    weekdayForecast(1);
 });
 
 async function weekdayForecast(inject){
-    let WDF = await fetch(inject);
-    // let WDFData = await WDF.json();
-    // console.log(WDFData.feed.entry[0].gsx$html.$t)
-    // InjHere.innerHTML = WDFData.feed.entry[0].gsx$html.$t
-    console.log(WDF)
+    let WDF = await fetch('https://spreadsheets.google.com/feeds/list/1fOLTeJmKnZ_agfjH-qYr9VO7KfkXlUA7rKYBv86gwIo/1/public/full?alt=json');
+    let WDFData = await WDF.json();
+    console.log(WDFData.feed.entry[inject].gsx$html.$t)
+    InjHere.innerHTML = WDFData.feed.entry[inject].gsx$html.$t
+    setTimeout(function(){  
+    let GoBack = document.getElementById('GoBack');
+
+    GoBack.addEventListener('click',function(){
+        WeeklyForecast(0)
+    });
+    }, 500);
+
+    
+}
+
+async function WeeklyForecast(inject){
+    let WDF = await fetch('https://spreadsheets.google.com/feeds/list/1fOLTeJmKnZ_agfjH-qYr9VO7KfkXlUA7rKYBv86gwIo/1/public/full?alt=json');
+    let WDFData = await WDF.json();
+    console.log(WDFData.feed.entry[inject].gsx$html.$t)
+    InjHere.innerHTML = WDFData.feed.entry[inject].gsx$html.$t
+    setTimeout(function(){
+        let Day1 = document.getElementById('Day1');
+let Day2 = document.getElementById('Day2');
+let Day3 = document.getElementById('Day3');
+let Day4 = document.getElementById('Day4');
+let Day5 = document.getElementById('Day5');
+
+Day1.addEventListener('click',function(){
+    weekdayForecast(1);
+});
+Day2.addEventListener('click',function(){
+    weekdayForecast(1);
+});
+Day3.addEventListener('click',function(){
+    weekdayForecast(1);
+});
+Day4.addEventListener('click',function(){
+    weekdayForecast(1);
+});
+Day5.addEventListener('click',function(){
+    weekdayForecast(1);
+});
+    
+    }, 500);
 }
