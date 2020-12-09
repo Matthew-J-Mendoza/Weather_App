@@ -64,7 +64,7 @@ body {
     border: white solid 3px;
 }
 .curentTemp{
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: bolder;
 }
 .dropdown-item:hover{
@@ -79,4 +79,23 @@ body {
 }
 .forecastDate{
     font-size: x-large;
+}
+.Location{
+    font-size: 1.5rem;
+    
+}
+.WeatherStatus{
+    font-size: 2.5rem;
+}
+.wOther:hover > .details{
+    transform: translate(-8rem,2.8rem);
+    transition: .5s ease;
+}
+.Measurement{
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+.top-box{
+    padding-left:  7.5rem;
+    padding-right: 7.5rem ;
 }
