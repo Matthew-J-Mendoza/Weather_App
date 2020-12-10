@@ -111,7 +111,7 @@ async function currentWeather(url){
 
         Humidity.innerText = currentforecastData.main.humidity+"%";
         WindSpeed.innerText = Math.round(currentforecastData.wind.speed)+"mph";
-        AirPressure.innerText = currentforecastData.main.pressure*100+"Pa"
+        AirPressure.innerText = currentforecastData.main.pressure+"hPa"
         todaysCurrenttemp.innerText = Math.round(currentforecastData.main.temp)+ ' °F';
         CityLabel.innerText = currentforecastData.name+", "+currentforecastData.sys.country;
         WeatherStatus.innerText = currentforecastData.weather[0].description;
