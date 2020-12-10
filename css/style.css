@@ -59,6 +59,8 @@ body {
 .boxes{
     border: #FFFFFF99 solid 3px;
     cursor: pointer;
+    background-color: rgba(104, 104, 104, 0.5);
+    backdrop-filter: blur(3px);
 }
 .boxes:hover{
     background-color: rgba(0, 0, 0, 0.11);
@@ -98,6 +100,7 @@ font-weight: 700;
     transform: translate(-8rem,2.8rem);
     transition: .5s ease;
 }
+
 .Measurement{
     font-weight: 500;
     font-size: 1.5rem;
@@ -113,4 +116,22 @@ font-weight: 700;
     font-weight: 500;
     font-size: 1.5rem;
     cursor: pointer;
+}
+.modal-dialog{
+    color: black;
+}
+.Mouse{
+    cursor: pointer;
+}
+.Mouse:hover{
+    color: rgb(161, 116, 19);
+}
+#IconStatus{
+    background-color: rgb(255, 255, 255,.4);
+    border-radius: 25%;
+    backdrop-filter: blur(15px);
+}
+.font{
+    font-size: x-large;
+    transform: translate(-1rem,0);
 }
