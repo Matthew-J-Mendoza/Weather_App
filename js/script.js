@@ -97,7 +97,8 @@ async function currentWeather(url){
         LastCitySearched = City
         console.log('You have search: '+LastCitySearched)
         // console.log(url);
-        //console.log(currentforecastData);
+        console.log("current:")
+        console.log(currentforecastData);
         
         // console.log("Presssure: "+currentforecastData.main.pressure);
         // console.log("Humidity: "+currentforecastData.main.humidity);
@@ -133,57 +134,49 @@ async function fiveDayForecast(url){
     
     let fiveForecast = await fetch(url);
     let fiveforecastData = await fiveForecast.json();
-    //console.log(fiveforecastData);
+    console.log("5 day")
+    console.log(fiveforecastData);
     
-    if (WeekDaySpecific ==false){
+    if (WeekDaySpecific ==true){
         //console.log(new Date(fiveforecastData.list[1].dt*1000))
-    
-    
     //console.log(dateText1.toLocaleString("en-US", {month: "numeric"})+'/'+dateText1.toLocaleString("en-US", {day: "numeric"})+'/'+dateText1.toLocaleString("en-US", {year: "numeric"}).substr(-2)+"-"+dateText1.toLocaleString("en-US", {weekday: "long"}))
+    let Icon_Morn = document.getElementById("Icon_Morn");
+    let Icon_Eve = document.getElementById("Icon_Eve");
+    let Icon_Nignt = document.getElementById("Icon_Night");
 
-        let Day_1_High = document.getElementById('Day_1_High');
-    let Day_2_High = document.getElementById('Day_2_High');
-    let Day_3_High = document.getElementById('Day_3_High');
-    let Day_4_High = document.getElementById('Day_4_High');
-    let Day_5_High = document.getElementById('Day_5_High');
-    
-    let Day_1_Low = document.getElementById('Day_1_Low');
-    let Day_2_Low = document.getElementById('Day_2_Low');
-    let Day_3_Low = document.getElementById('Day_3_Low');
-    let Day_4_Low = document.getElementById('Day_4_Low');
-    let Day_5_Low = document.getElementById('Day_5_Low');
-    
-    let IconDay1 = document.getElementById('IconDay1');
-    let IconDay2 = document.getElementById('IconDay2');
-    let IconDay3 = document.getElementById('IconDay3');
-    let IconDay4 = document.getElementById('IconDay4');
-    let IconDay5 = document.getElementById('IconDay5');
-
-    
+    switch(DayoWeekNum){
+        case 1:
+        Icon_Morn.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[5].weather[0].icon+"@2x.png"
+        Icon_Eve.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[7].weather[0].icon+"@2x.png"
+        Icon_Nignt.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[8].weather[0].icon+"@2x.png"
+        break;
+        case 2:
+        Icon_Morn.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[12].weather[0].icon+"@2x.png"
+        Icon_Eve.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[14].weather[0].icon+"@2x.png"
+        Icon_Nignt.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[15].weather[0].icon+"@2x.png"
+        break;
+        case 3:
+        Icon_Morn.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[20].weather[0].icon+"@2x.png"
+        Icon_Eve.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[22].weather[0].icon+"@2x.png"
+        Icon_Nignt.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[23].weather[0].icon+"@2x.png"
+        break;
+        case 4:
+        Icon_Morn.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[28].weather[0].icon+"@2x.png"
+        Icon_Eve.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[30].weather[0].icon+"@2x.png"
+        Icon_Nignt.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[31].weather[0].icon+"@2x.png"
+        break;
+        case 5:
+        Icon_Morn.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[36].weather[0].icon+"@2x.png"
+        Icon_Eve.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[38].weather[0].icon+"@2x.png"
+        Icon_Nignt.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[39].weather[0].icon+"@2x.png"
+        break;
+    }
+    } 
 
         
-
-        Day_1_High.innerText = Math.round(fiveforecastData.list[0].main.temp_max)+" °F";
-        Day_1_Low.innerText = Math.round(fiveforecastData.list[0].main.temp_min)+" °F";
-        Day_2_High.innerText = Math.round(fiveforecastData.list[1].main.temp_max)+" °F";
-        Day_2_Low.innerText = Math.round(fiveforecastData.list[1].main.temp_min)+" °F";
-        Day_3_High.innerText = Math.round(fiveforecastData.list[2].main.temp_max)+" °F";
-        Day_3_Low.innerText = Math.round(fiveforecastData.list[2].main.temp_min)+" °F";
-        Day_4_High.innerText = Math.round(fiveforecastData.list[3].main.temp_max)+" °F";
-        Day_4_Low.innerText = Math.round(fiveforecastData.list[3].main.temp_min)+" °F";
-        Day_5_High.innerText = Math.round(fiveforecastData.list[4].main.temp_max)+" °F";
-        Day_5_Low.innerText = Math.round(fiveforecastData.list[4].main.temp_min)+" °F";
     
-        IconDay1.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[0].weather[0].icon+"@2x.png";
-        IconDay2.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[1].weather[0].icon+"@2x.png";
-        IconDay3.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[2].weather[0].icon+"@2x.png";
-        IconDay4.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[3].weather[0].icon+"@2x.png";
-        IconDay5.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[4].weather[0].icon+"@2x.png";
-    } else{
-
-    }
-     
 }
+
 async function OneCallAPI(url){
     //console.log(url);
     
@@ -193,6 +186,7 @@ async function OneCallAPI(url){
     // console.log('Chance of rain: '+ocatData.hourly[0].pop);
     // console.log('morn: '+ocatData.daily[0].temp.morn)
     // console.log('eve: '+ocatData.daily[0].temp.eve)
+    console.log('One Call API:')
     console.log(ocatData)
     currentMorn.innerText = Math.round(ocatData.daily[0].temp.morn)+ ' °F';
     currentEve.innerText = Math.round(ocatData.daily[0].temp.eve)+ ' °F';
@@ -206,6 +200,8 @@ async function OneCallAPI(url){
         let ForecastEve = document.getElementById('forecastEve');
         let ForecastNight = document.getElementById('forecastNight');
 
+        
+
         let DayofTheWeek = document.getElementById('DayofTheWeek');
         let SpecificDOW = new Date(ocatData.daily[DayoWeekNum].dt*1000);
 
@@ -215,6 +211,8 @@ async function OneCallAPI(url){
         ForecastMorn.innerText = Math.round(ocatData.daily[1].temp.morn)+ ' °F';
         ForecastEve.innerText = Math.round(ocatData.daily[DayoWeekNum].temp.eve)+ ' °F';
         ForecastNight.innerText = Math.round(ocatData.daily[DayoWeekNum].temp.night)+ ' °F';
+
+        
 
     } else{
     let dateText1 = new Date(ocatData.daily[1].dt*1000);
@@ -228,6 +226,40 @@ async function OneCallAPI(url){
     let Date3 = document.getElementById('Date3');
     let Date4 = document.getElementById('Date4');
     let Date5 = document.getElementById('Date5');
+
+    let IconDay1 = document.getElementById('IconDay1');
+    let IconDay2 = document.getElementById('IconDay2');
+    let IconDay3 = document.getElementById('IconDay3');
+    let IconDay4 = document.getElementById('IconDay4');
+    let IconDay5 = document.getElementById('IconDay5');
+
+    let Day_2_High = document.getElementById('Day_2_High');
+    let Day_3_High = document.getElementById('Day_3_High');
+    let Day_4_High = document.getElementById('Day_4_High');
+    let Day_5_High = document.getElementById('Day_5_High');
+    
+    let Day_1_Low = document.getElementById('Day_1_Low');
+    let Day_2_Low = document.getElementById('Day_2_Low');
+    let Day_3_Low = document.getElementById('Day_3_Low');
+    let Day_4_Low = document.getElementById('Day_4_Low');
+    let Day_5_Low = document.getElementById('Day_5_Low');
+
+    Day_1_High.innerText = Math.round(ocatData.daily[1].temp.max)+" °F";
+        Day_1_Low.innerText = Math.round(ocatData.daily[1].temp.min)+" °F";
+        Day_2_High.innerText = Math.round(ocatData.daily[2].temp.max)+" °F";
+        Day_2_Low.innerText = Math.round(ocatData.daily[2].temp.min)+" °F";
+        Day_3_High.innerText = Math.round(ocatData.daily[3].temp.max)+" °F";
+        Day_3_Low.innerText = Math.round(ocatData.daily[3].temp.min)+" °F";
+        Day_4_High.innerText = Math.round(ocatData.daily[4].temp.max)+" °F";
+        Day_4_Low.innerText = Math.round(ocatData.daily[4].temp.min)+" °F";
+        Day_5_High.innerText = Math.round(ocatData.daily[5].temp.max)+" °F";
+        Day_5_Low.innerText = Math.round(ocatData.daily[5].temp.min)+" °F";
+
+    IconDay1.src = 'http://openweathermap.org/img/wn/'+ocatData.daily[1].weather[0].icon+"@2x.png";
+        IconDay2.src = 'http://openweathermap.org/img/wn/'+ocatData.daily[2].weather[0].icon+"@2x.png";
+        IconDay3.src = 'http://openweathermap.org/img/wn/'+ocatData.daily[3].weather[0].icon+"@2x.png";
+        IconDay4.src = 'http://openweathermap.org/img/wn/'+ocatData.daily[4].weather[0].icon+"@2x.png";
+        IconDay5.src = 'http://openweathermap.org/img/wn/'+ocatData.daily[5].weather[0].icon+"@2x.png";
 
     Date1.innerText = dateText1.toLocaleString("en-US", {month: "numeric"})+'/'+dateText1.toLocaleString("en-US", {day: "numeric"})+'/'+dateText1.toLocaleString("en-US", {year: "numeric"}).substr(-2)+"-"+dateText1.toLocaleString("en-US", {weekday: "long"})
         Date2.innerText = dateText2.toLocaleString("en-US", {month: "numeric"})+'/'+dateText2.toLocaleString("en-US", {day: "numeric"})+'/'+dateText2.toLocaleString("en-US", {year: "numeric"}).substr(-2)+"-"+dateText2.toLocaleString("en-US", {weekday: "long"})
@@ -245,11 +277,13 @@ async function OneCallAPI(url){
 // LW5(fiveDayUrl+City+apikey);
 
 searchBTN.addEventListener('click', function(){
-    City = searchBar.value;
+    if ( searchBar.value != ""){
+        City = searchBar.value;
     console.log(City);
     currentWeather(url_pt1+City+'&units=imperial'+apikey);
     searchBar.value = "";
     WeeklyForecast(0);
+    }
 })
 searchBar.addEventListener('keypress', function(e){
     if (e.code == "Enter" && e.target.value != '')
@@ -358,13 +392,13 @@ Day5.addEventListener('click',function(){
 
 
 favBTN.addEventListener('click',function(e){
-    let isOnList = false;
+    let list = false;
 
     if (Favorites.length > 0){
         for (a = 0; a<Favorites.length; a++){
             
             if (Favorites[a] == LastCitySearched.toUpperCase()){
-                isOnList = true;
+                list = true;
                 Favorites.splice(a,1);
                 document.getElementById(LastCitySearched.toUpperCase()).remove();
                 console.log(LastCitySearched+" has been removed");
@@ -374,14 +408,14 @@ favBTN.addEventListener('click',function(e){
 
         }
     }
-    if (isOnList == false){
+    if (list == false){
         createFavBtn(LastCitySearched);
     addToFavorites(LastCitySearched);
     console.log(Favorites);
     e.target.className = "fas fa-star mt-2";
 
 }
-console.log(isOnList);
+console.log(list);
 });
 function addToFavorites(FavCity){
         Favorites.push(FavCity.toUpperCase());
@@ -400,8 +434,11 @@ function createFavBtn(cityName){
     Column.addEventListener('click', function(){
         City = cityText.innerText;
         //console.log(City);
-        searchBar.value = ""
+        searchBar.value = "";
     currentWeather(url_pt1+City+'&units=imperial'+apikey);
+    if (cityText.innerText != LastCitySearched.toUpperCase()){
+        WeeklyForecast(0);
+    }
     })
     Column.appendChild(cityText);
     FavInject.appendChild(Column);
@@ -427,7 +464,10 @@ if( NFO != "" || NFO != null)
             City = cityText.innerText;
             //console.log(City);
             searchBar.value = "";
-        currentWeather(url_pt1+City+'&units=imperial'+apikey);
+            currentWeather(url_pt1+City+'&units=imperial'+apikey);
+                if (cityText.innerText != LastCitySearched.toUpperCase()){
+                    WeeklyForecast(0);
+                }
         })
         
     
@@ -437,4 +477,3 @@ if( NFO != "" || NFO != null)
         //localStorage.setItem("Favlist", JSON.stringify(Favorites))
     }
 }
-
