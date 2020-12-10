@@ -93,6 +93,7 @@ async function currentWeather(url){
     let currentForecast = await fetch(url);
     let currentforecastData = await currentForecast.json();
     if(currentforecastData.cod != 404){
+        
         LastCitySearched = City
         console.log('You have search: '+LastCitySearched)
         // console.log(url);
@@ -178,6 +179,8 @@ async function fiveDayForecast(url){
         IconDay3.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[2].weather[0].icon+"@2x.png";
         IconDay4.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[3].weather[0].icon+"@2x.png";
         IconDay5.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[4].weather[0].icon+"@2x.png";
+    } else{
+
     }
      
 }
@@ -190,7 +193,7 @@ async function OneCallAPI(url){
     // console.log('Chance of rain: '+ocatData.hourly[0].pop);
     // console.log('morn: '+ocatData.daily[0].temp.morn)
     // console.log('eve: '+ocatData.daily[0].temp.eve)
-    //console.log(ocatData)
+    console.log(ocatData)
     currentMorn.innerText = Math.round(ocatData.daily[0].temp.morn)+ ' °F';
     currentEve.innerText = Math.round(ocatData.daily[0].temp.eve)+ ' °F';
 
@@ -241,10 +244,23 @@ async function OneCallAPI(url){
 
 // LW5(fiveDayUrl+City+apikey);
 
-searchBTN.addEventListener('click', function(e){
+searchBTN.addEventListener('click', function(){
     City = searchBar.value;
     console.log(City);
     currentWeather(url_pt1+City+'&units=imperial'+apikey);
+    searchBar.value = "";
+    WeeklyForecast(0);
+})
+searchBar.addEventListener('keypress', function(e){
+    if (e.code == "Enter" && e.target.value != '')
+    {
+        console.log(e.code)
+        City = e.target.value;
+    console.log(City);
+    currentWeather(url_pt1+City+'&units=imperial'+apikey);
+    e.target.value = '';
+    WeeklyForecast(0);
+    }
 })
 
 Day1.addEventListener('click',function(){
