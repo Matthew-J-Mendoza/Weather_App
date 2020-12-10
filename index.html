@@ -23,13 +23,13 @@
                         <img id="IconStatus" src="./images/cloudy.png" alt="" width="80rem">
                     </div>
                     <div class="col-10  highTemp2 WeatherStatus">
-                        <p id="WeatherStatus">Cloudy</p>
+                        <p id="WeatherStatus">-</p>
                     </div>
                     <div class="col-12 Location">
-                        <p id="CityLabel">Long Beach, USA</p>
+                        <p id="CityLabel">-</p>
                     </div>
                     <div class="col-12">
-                        <p>Wednesday, 12/9/2020</p>
+                        <p id="TodaysDate">-</p>
                     </div>
                     <div class="col-12 ">
                         <p id="todaysCurrenttemp" class="curentTemp">75 °F</p>
@@ -40,19 +40,19 @@
                                 <p>Morning:</p>
                             </div>
                             <div class="col-6">
-                                <p id="morn">62°F</p>
+                                <p id="morn">-</p>
                             </div>
                             <div class="col-6">
                                 <p>Afternoon:</p>
                             </div>
                             <div class="col-6">
-                                <p id="eve">78°F</p>
+                                <p id="eve">-</p>
                             </div>
                             <div class="col-6">
                                 <p>Night:</p>
                             </div>
                             <div class="col-6">
-                                <p id="night">57°F</p>
+                                <p id="night">-</p>
                             </div>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                                     </div>
                                     <div class="col-4"></div>
                                     <div class="col-8 pb-2 Measurement text-left">
-                                        <p id="Humidity">50%</p>
+                                        <p id="Humidity">-</p>
                                     </div>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                                     </div>
                                     <div class="col-4"></div>
                                     <div class="col-8 pb-2 Measurement text-left">
-                                        <p id="ChanceOfRain">10%</p>
+                                        <p id="ChanceOfRain">-</p>
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +188,7 @@
                                     </div>
                                     <div class="col-4"></div>
                                     <div class="col-8 pb-2 Measurement text-left">
-                                        <p id="WindSpeed">5 mph</p>
+                                        <p id="WindSpeed">-</p>
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +200,7 @@
                                     </div>
                                     <div class="col-4"></div>
                                     <div class="col-8 Measurement text-left">
-                                        <p id="AirPressure">1018Pa</p>
+                                        <p id="AirPressure">-</p>
                                     </div>
                                 </div>
                             </div>
@@ -264,7 +264,7 @@
                                     <img id="IconDay3" src="./images/cloudy.png" alt="" width="90rem">
                                 </div>
                                 <div class="col-6 highTemp">
-                                    <p id="Day_3_High">75 °F</p>
+                                    <p id="Day_3_High">-</p>
                                 </div>
                                 <div class="col-6 text-right">
                                     <p id="Day_3_Low" class="lowTemp">-</p>
@@ -315,19 +315,22 @@
 
     <!-- <div class="container">
         <div class="row">
-            <div class="col-5">
-                <div id="GoBack"  class="row">
-                    <div class="col-1 text-left">
-                        <div class="fas fa-chevron-left"></div>
+            <div class="col-2">
+                <div id="GoBack"   class="row BackHover">
+                    <div  class="col-3 text-left">
+                        <div class="fas fa-chevron-left BackArrow"></div>
                     </div>
-                    <div class="col-11">
-                        <p id="DayofTheWeek" class="font"> Tuesday</p>
+                    <div class="col-9">
+                        <p class="font">Back</p>
                     </div>
                 </div>
             </div>
+            <div class="col-10">
+                <p id="DayofTheWeek" class="font  text-center">Loading...</p>
+            </div>
             <div class="col-12">
                 <div class="row d-flex justify-content-between">
-                    <div id="Day1" class="col-2 mx-2 boxes slideLeft pt-3">
+                    <div id="Day1" class="col-2 mx-2 DaySpecificBoxes slideLeft pt-3">
                         <div class="row">
                             <div class="col-6 text-right mt-2 TimeoDay">
                                 <p>Morning</p>
@@ -336,11 +339,11 @@
                                 <img src="./images/cloudy.png" alt="" width="50rem">
                             </div>
                             <div class="col-12 text-center WeekdayTemp">
-                                <p id="forecasttMorn">62 °F </p>
+                                <p id="forecasttMorn">-</p>
                             </div>
                         </div>
                     </div>
-                    <div id="Day1" class="col-2 mx-2 boxes slideLeft pt-3">
+                    <div id="Day1" class="col-2 mx-2 DaySpecificBoxes slideLeft pt-3">
                         <div class="row">
                             <div class="col-6 text-right mt-2 TimeoDay">
                                 <p>Evening</p>
@@ -349,11 +352,11 @@
                                 <img src="./images/cloudy.png" alt="" width="50rem">
                             </div>
                             <div class="col-12 text-center WeekdayTemp">
-                                <p id="forecastEve">62 °F </p>
+                                <p id="forecastEve">-</p>
                             </div>
                         </div>
                     </div>
-                    <div id="Day1" class="col-2 mx-2 boxes slideLeft pt-3">
+                    <div id="Day1" class="col-2 mx-2 DaySpecificBoxes slideLeft pt-3">
                         <div class="row">
                             <div class="col-6 text-right mt-2 TimeoDay">
                                 <p>Night</p>
@@ -362,7 +365,7 @@
                                 <img src="./images/cloudy.png" alt="" width="50rem">
                             </div>
                             <div class="col-12 text-center WeekdayTemp">
-                                <p id="forecastNight">62 °F </p>
+                                <p id="forecastNight">-</p>
                             </div>
                         </div>
                     </div>

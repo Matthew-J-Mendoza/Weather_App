@@ -4,8 +4,8 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    color: white;
     background-color: rgba(17, 0, 255, 0.014);
+    color: white;
     font-size: 100%;
   }
   .searchBTN{
@@ -65,6 +65,7 @@ body {
 .boxes:hover{
     background-color: rgba(0, 0, 0, 0.11);
     border: white solid 3px;
+    transition: .2s ease;
 }
 .curentTemp{
     font-size: 3rem;
@@ -73,6 +74,7 @@ body {
 .dropdown-item:hover{
     color: #B47D0F;
 }
+
 .lowTemp{
     color: #FFFFFF99;
     font-size: 1.5rem;
@@ -117,11 +119,16 @@ font-weight: 700;
     font-size: 1.5rem;
     cursor: pointer;
 }
+#DayofTheWeek{
+    transform: translate(-5.6rem,0rem);
+}
+
 .modal-dialog{
     color: black;
 }
 .Mouse{
     cursor: pointer;
+    
 }
 .Mouse:hover{
     color: rgb(161, 116, 19);
@@ -135,3 +142,18 @@ font-weight: 700;
     font-size: x-large;
     transform: translate(-1rem,0);
 }
+
+.DaySpecificBoxes{
+    border: #FFFFFF99 solid 3px;
+    background-color: rgba(104, 104, 104, 0.5);
+    backdrop-filter: blur(3px);
+    cursor: default;
+}
+#TodaysDate{
+    font-weight: 600;
+    font-size: large;
+}
+.cutOff{
+    width: 100%;
+}
+

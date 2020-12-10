@@ -2,6 +2,7 @@
 
 let url_pt1 = "http://api.openweathermap.org/data/2.5/weather?q=";
 let City = "Manteca";
+let LastCitySearched = ''
 let apikey = '&appid=1de51df452c6c848122c0ddbab965dc4';
 
 let fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=";
@@ -26,6 +27,7 @@ let todaysCurrenttemp = document.getElementById('todaysCurrenttemp');
 let CityLabel = document.getElementById('CityLabel');
 let WeatherStatus = document.getElementById('WeatherStatus');
 let IconStatus = document.getElementById('IconStatus');
+let TodaysDate = document.getElementById('TodaysDate');
 
 let WeekDaySpecific = false;
 let DayoWeekNum = 0;
@@ -70,19 +72,40 @@ let InjHere = document.getElementById('InjectionPoint');
 
 
 // LW3(fiveDayUrl+City+apikey);
+function favCheck(){
+    let Faved = false;
+    if (Favorites.length > 0){
+        for (a = 0; a < Favorites.length; a++){
+            if (LastCitySearched.toUpperCase() == Favorites[a]){
+                Faved = true;
+            }
+        }
+    }
+    if (Faved == true){
+        favBTN.className = "fas fa-star mt-2";
+    } else {
+        favBTN.className = "far fa-star mt-2";
 
+    }
+}
 async function currentWeather(url){
     
     let currentForecast = await fetch(url);
     let currentforecastData = await currentForecast.json();
     if(currentforecastData.cod != 404){
+        LastCitySearched = City
+        console.log('You have search: '+LastCitySearched)
         // console.log(url);
-        // console.log(currentforecastData);
+        //console.log(currentforecastData);
         
         // console.log("Presssure: "+currentforecastData.main.pressure);
         // console.log("Humidity: "+currentforecastData.main.humidity);
         // console.log("wind Speed: "+currentforecastData.wind.speed);
         // console.log("Current temp: "+currentforecastData.main.temp);
+        favCheck();
+        let CurrentDate = new Date (currentforecastData.dt*1000);
+
+        TodaysDate.innerText = CurrentDate.toLocaleString("en-US", {weekday: "long"})+"-"+CurrentDate.toLocaleString("en-US", {month: "numeric"})+'/'+CurrentDate.toLocaleString("en-US", {day: "numeric"})+'/'+CurrentDate.toLocaleString("en-US", {year: "numeric"})
 
         Humidity.innerText = currentforecastData.main.humidity+"%";
         WindSpeed.innerText = Math.round(currentforecastData.wind.speed)+"mph";
@@ -97,17 +120,19 @@ async function currentWeather(url){
 
         OneCallAPI("https://api.openweathermap.org/data/2.5/onecall?lat="+currentforecastData.coord.lat+'&lon='+currentforecastData.coord.lon+'&units=imperial'+"&exclude="+apikey);
 
-        // console.log(currentforecastData.weather[0].icon);
+        //console.log(currentforecastData);
         fiveDayForecast(fiveDayUrl+City+"&units=imperial"+apikey);
     } else{
         alert ("City not found")
+        City = LastCitySearched;
+        console.log("City is still: "+City)
     }
 }
 async function fiveDayForecast(url){
     
     let fiveForecast = await fetch(url);
     let fiveforecastData = await fiveForecast.json();
-    console.log(fiveforecastData);
+    //console.log(fiveforecastData);
     
     if (WeekDaySpecific ==false){
         //console.log(new Date(fiveforecastData.list[1].dt*1000))
@@ -165,7 +190,7 @@ async function OneCallAPI(url){
     // console.log('Chance of rain: '+ocatData.hourly[0].pop);
     // console.log('morn: '+ocatData.daily[0].temp.morn)
     // console.log('eve: '+ocatData.daily[0].temp.eve)
-    console.log(ocatData)
+    //console.log(ocatData)
     currentMorn.innerText = Math.round(ocatData.daily[0].temp.morn)+ ' °F';
     currentEve.innerText = Math.round(ocatData.daily[0].temp.eve)+ ' °F';
 
@@ -183,7 +208,7 @@ async function OneCallAPI(url){
 
         //console.log(SpecificDOW.toLocaleString("en-US", {weekday: "long"}))
         DayofTheWeek.innerText = SpecificDOW.toLocaleString("en-US", {weekday: "long"});
-        console.log(ocatData.daily[1].temp.morn)
+        //console.log(ocatData.daily[1].temp.morn)
         ForecastMorn.innerText = Math.round(ocatData.daily[1].temp.morn)+ ' °F';
         ForecastEve.innerText = Math.round(ocatData.daily[DayoWeekNum].temp.eve)+ ' °F';
         ForecastNight.innerText = Math.round(ocatData.daily[DayoWeekNum].temp.night)+ ' °F';
@@ -316,40 +341,57 @@ Day5.addEventListener('click',function(){
 // .text (use this to inject html code)
 
 
-favBTN.addEventListener('click',function(){
-    if (City != ''){
-        createFavBtn(City);
-    addToFavorites(City);
-    console.log(Favorites);
+favBTN.addEventListener('click',function(e){
+    let isOnList = false;
 
-    } else{
-        alert('Cannot save this')
+    if (Favorites.length > 0){
+        for (a = 0; a<Favorites.length; a++){
+            
+            if (Favorites[a] == LastCitySearched.toUpperCase()){
+                isOnList = true;
+                Favorites.splice(a,1);
+                document.getElementById(LastCitySearched.toUpperCase()).remove();
+                console.log(LastCitySearched+" has been removed");
+                localStorage.setItem("Favlist", JSON.stringify(Favorites))
+                e.target.className = "far fa-star mt-2";
+            }
+
+        }
     }
+    if (isOnList == false){
+        createFavBtn(LastCitySearched);
+    addToFavorites(LastCitySearched);
+    console.log(Favorites);
+    e.target.className = "fas fa-star mt-2";
+
+}
+console.log(isOnList);
 });
 function addToFavorites(FavCity){
-
+        Favorites.push(FavCity.toUpperCase());
+        localStorage.setItem("Favlist", JSON.stringify(Favorites))
     console.log(FavCity+" has been add to list!");
-    Favorites.push(FavCity.toUpperCase());
-    localStorage.setItem("Favlist", JSON.stringify(Favorites))
-    
-    
 }
 
 function createFavBtn(cityName){
     let Column = document.createElement('div');
     Column.className = "col-12 text-center Mouse";
+    Column.setAttribute('id', cityName.toUpperCase());
     
     let cityText = document.createElement('p');
+    cityText.className = "text-truncate cutOff"
     cityText.innerText = cityName.toUpperCase()
     Column.addEventListener('click', function(){
         City = cityText.innerText;
-    console.log(City);
+        //console.log(City);
+        searchBar.value = ""
     currentWeather(url_pt1+City+'&units=imperial'+apikey);
     })
     Column.appendChild(cityText);
     FavInject.appendChild(Column);
     
 }
+currentWeather(url_pt1+City+'&units=imperial'+apikey);
 
 if( NFO != "" || NFO != null)
 {
@@ -357,24 +399,26 @@ if( NFO != "" || NFO != null)
     {
         let Column = document.createElement('div');
         Column.className = "col-12 text-center Mouse";
+        Column.setAttribute('id', NFO[i]);
         
         let cityText = document.createElement('p');
+        cityText.className = "text-truncate cutOff"
         cityText.innerText = NFO[i].toUpperCase()
     
         Column.appendChild(cityText);
 
         Column.addEventListener('click', function(){
             City = cityText.innerText;
-        console.log(City);
+            //console.log(City);
+            searchBar.value = "";
         currentWeather(url_pt1+City+'&units=imperial'+apikey);
         })
         
     
-        //ulElement.appendChild(liElement);
+        
         FavInject.appendChild(Column);
         Favorites.push(NFO[i]);
         //localStorage.setItem("Favlist", JSON.stringify(Favorites))
     }
 }
 
-currentWeather(url_pt1+City+'&units=imperial'+apikey);
