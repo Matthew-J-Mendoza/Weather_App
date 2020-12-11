@@ -1,4 +1,4 @@
-//why did no one mention &units=imperial after City makes temp so much easier to understand lol
+
 
 let url_pt1 = "http://api.openweathermap.org/data/2.5/weather?q=";
 let City = "Manteca";
@@ -33,23 +33,7 @@ let WeekDaySpecific = false;
 let DayoWeekNum = 0;
 
 
-// let Day_1_High = document.getElementById('Day_1_High');
-// let Day_2_High = document.getElementById('Day_2_High');
-// let Day_3_High = document.getElementById('Day_3_High');
-// let Day_4_High = document.getElementById('Day_4_High');
-// let Day_5_High = document.getElementById('Day_5_High');
 
-// let Day_1_Low = document.getElementById('Day_1_Low');
-// let Day_2_Low = document.getElementById('Day_2_Low');
-// let Day_3_Low = document.getElementById('Day_3_Low');
-// let Day_4_Low = document.getElementById('Day_4_Low');
-// let Day_5_Low = document.getElementById('Day_5_Low');
-
-// let IconDay1 = document.getElementById('IconDay1');
-// let IconDay2 = document.getElementById('IconDay2');
-// let IconDay3 = document.getElementById('IconDay3');
-// let IconDay4 = document.getElementById('IconDay4');
-// let IconDay5 = document.getElementById('IconDay5');
 
 
 
@@ -62,13 +46,6 @@ let FavNum = 0
 
 let InjHere = document.getElementById('InjectionPoint');
 
-
-// async function LW3(url){
-//     let w = await fetch(url);
-//     let d = await w.json();
-//     console.log(d);
-//     console.log(d.name);
-// }
 
 
 // LW3(fiveDayUrl+City+apikey);
@@ -96,16 +73,15 @@ async function currentWeather(url){
         
         LastCitySearched = City
         console.log('You have search: '+LastCitySearched)
-        // console.log(url);
+        
         console.log("current:")
         console.log(currentforecastData);
         
-        // console.log("Presssure: "+currentforecastData.main.pressure);
-        // console.log("Humidity: "+currentforecastData.main.humidity);
-        // console.log("wind Speed: "+currentforecastData.wind.speed);
-        // console.log("Current temp: "+currentforecastData.main.temp);
+        
         favCheck();
         let CurrentDate = new Date (currentforecastData.dt*1000);
+
+        
 
         TodaysDate.innerText = CurrentDate.toLocaleString("en-US", {weekday: "long"})+"-"+CurrentDate.toLocaleString("en-US", {month: "numeric"})+'/'+CurrentDate.toLocaleString("en-US", {day: "numeric"})+'/'+CurrentDate.toLocaleString("en-US", {year: "numeric"})
 
@@ -122,7 +98,8 @@ async function currentWeather(url){
 
         OneCallAPI("https://api.openweathermap.org/data/2.5/onecall?lat="+currentforecastData.coord.lat+'&lon='+currentforecastData.coord.lon+'&units=imperial'+"&exclude="+apikey);
 
-        //console.log(currentforecastData);
+        
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------
         fiveDayForecast(fiveDayUrl+City+"&units=imperial"+apikey);
     } else{
         alert ("City not found")
@@ -137,55 +114,22 @@ async function fiveDayForecast(url){
     console.log("5 day")
     console.log(fiveforecastData);
     
+    console.log(new Date(fiveforecastData.list[1].dt*1000))
     if (WeekDaySpecific ==true){
-        //console.log(new Date(fiveforecastData.list[1].dt*1000))
-    //console.log(dateText1.toLocaleString("en-US", {month: "numeric"})+'/'+dateText1.toLocaleString("en-US", {day: "numeric"})+'/'+dateText1.toLocaleString("en-US", {year: "numeric"}).substr(-2)+"-"+dateText1.toLocaleString("en-US", {weekday: "long"}))
-    let Icon_Morn = document.getElementById("Icon_Morn");
-    let Icon_Eve = document.getElementById("Icon_Eve");
-    let Icon_Nignt = document.getElementById("Icon_Night");
-
-    switch(DayoWeekNum){
-        case 1:
-        Icon_Morn.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[5].weather[0].icon+"@2x.png"
-        Icon_Eve.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[7].weather[0].icon+"@2x.png"
-        Icon_Nignt.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[8].weather[0].icon+"@2x.png"
-        break;
-        case 2:
-        Icon_Morn.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[12].weather[0].icon+"@2x.png"
-        Icon_Eve.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[14].weather[0].icon+"@2x.png"
-        Icon_Nignt.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[15].weather[0].icon+"@2x.png"
-        break;
-        case 3:
-        Icon_Morn.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[20].weather[0].icon+"@2x.png"
-        Icon_Eve.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[22].weather[0].icon+"@2x.png"
-        Icon_Nignt.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[23].weather[0].icon+"@2x.png"
-        break;
-        case 4:
-        Icon_Morn.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[28].weather[0].icon+"@2x.png"
-        Icon_Eve.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[30].weather[0].icon+"@2x.png"
-        Icon_Nignt.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[31].weather[0].icon+"@2x.png"
-        break;
-        case 5:
-        Icon_Morn.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[36].weather[0].icon+"@2x.png"
-        Icon_Eve.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[38].weather[0].icon+"@2x.png"
-        Icon_Nignt.src = 'http://openweathermap.org/img/wn/'+fiveforecastData.list[39].weather[0].icon+"@2x.png"
-        break;
-    }
+    
     } 
 
         
     
 }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 async function OneCallAPI(url){
-    //console.log(url);
+   
     
     let OCA = await fetch(url);
     let ocatData = await OCA.json();
     
-    // console.log('Chance of rain: '+ocatData.hourly[0].pop);
-    // console.log('morn: '+ocatData.daily[0].temp.morn)
-    // console.log('eve: '+ocatData.daily[0].temp.eve)
     console.log('One Call API:')
     console.log(ocatData)
     currentMorn.innerText = Math.round(ocatData.daily[0].temp.morn)+ ' °F';
@@ -200,17 +144,25 @@ async function OneCallAPI(url){
         let ForecastEve = document.getElementById('forecastEve');
         let ForecastNight = document.getElementById('forecastNight');
 
+        let Icon_Morn = document.getElementById("Icon_Morn");
+    let Icon_Eve = document.getElementById("Icon_Eve");
+    let Icon_Nignt = document.getElementById("Icon_Night");
+
         
 
         let DayofTheWeek = document.getElementById('DayofTheWeek');
         let SpecificDOW = new Date(ocatData.daily[DayoWeekNum].dt*1000);
 
-        //console.log(SpecificDOW.toLocaleString("en-US", {weekday: "long"}))
+        
         DayofTheWeek.innerText = SpecificDOW.toLocaleString("en-US", {weekday: "long"});
-        //console.log(ocatData.daily[1].temp.morn)
+        
         ForecastMorn.innerText = Math.round(ocatData.daily[1].temp.morn)+ ' °F';
         ForecastEve.innerText = Math.round(ocatData.daily[DayoWeekNum].temp.eve)+ ' °F';
         ForecastNight.innerText = Math.round(ocatData.daily[DayoWeekNum].temp.night)+ ' °F';
+
+        Icon_Morn.src = 'http://openweathermap.org/img/wn/'+ocatData.daily[DayoWeekNum].weather[0].icon+"@2x.png"
+        Icon_Eve.src = 'http://openweathermap.org/img/wn/'+ocatData.daily[DayoWeekNum].weather[0].icon+"@2x.png"
+        Icon_Nignt.src = 'http://openweathermap.org/img/wn/'+(ocatData.daily[DayoWeekNum].weather[0].icon).substr(0, (ocatData.daily[DayoWeekNum].weather[0].icon).length-1)+'n'+"@2x.png"
 
         
 
@@ -274,7 +226,7 @@ async function OneCallAPI(url){
 }
 
 
-// LW5(fiveDayUrl+City+apikey);
+
 
 searchBTN.addEventListener('click', function(){
     if ( searchBar.value != ""){
@@ -282,7 +234,7 @@ searchBTN.addEventListener('click', function(){
     console.log(City);
     currentWeather(url_pt1+City+'&units=imperial'+apikey);
     searchBar.value = "";
-    WeeklyForecast(0);
+    WeeklyForecastInject(0);
     }
 })
 searchBar.addEventListener('keypress', function(e){
@@ -293,41 +245,41 @@ searchBar.addEventListener('keypress', function(e){
     console.log(City);
     currentWeather(url_pt1+City+'&units=imperial'+apikey);
     e.target.value = '';
-    WeeklyForecast(0);
+    WeeklyForecastInject(0);
     }
 })
 
 Day1.addEventListener('click',function(){
-    // DaysOftheWeekForecast('https://spreadsheets.google.com/feeds/list/1fOLTeJmKnZ_agfjH-qYr9VO7KfkXlUA7rKYBv86gwIo/1/public/full?alt=json');
+
     DayoWeekNum = 1
-    DaysOftheWeekForecast(1);
+    WeeDaySpecificInject(1);
     
 });
 Day2.addEventListener('click',function(){
     DayoWeekNum = 2
-    DaysOftheWeekForecast(1);
+    WeeDaySpecificInject(1);
     
 });
 Day3.addEventListener('click',function(){
     DayoWeekNum = 3
-    DaysOftheWeekForecast(1);
+    WeeDaySpecificInject(1);
     
 });
 Day4.addEventListener('click',function(){
     DayoWeekNum = 4
-    DaysOftheWeekForecast(1);
+    WeeDaySpecificInject(1);
     
 });
 Day5.addEventListener('click',function(){
     DayoWeekNum = 5
-    DaysOftheWeekForecast(1);
+    WeeDaySpecificInject(1);
     
 });
 
-async function DaysOftheWeekForecast(inject){
+async function WeeDaySpecificInject(inject){
     let WDF = await fetch('https://spreadsheets.google.com/feeds/list/1fOLTeJmKnZ_agfjH-qYr9VO7KfkXlUA7rKYBv86gwIo/1/public/full?alt=json');
     let WDFData = await WDF.json();
-    // console.log(WDFData.feed.entry[inject].gsx$html.$t)
+   
     InjHere.innerHTML = WDFData.feed.entry[inject].gsx$html.$t
     setTimeout(function(){  
     let GoBack = document.getElementById('GoBack');
@@ -337,17 +289,17 @@ async function DaysOftheWeekForecast(inject){
     currentWeather(url_pt1+City+'&units=imperial'+apikey);
     
     GoBack.addEventListener('click',function(){
-        WeeklyForecast(0)
+        WeeklyForecastInject(0)
     });
     }, 500);
 
     
 }
 
-async function WeeklyForecast(inject){
+async function WeeklyForecastInject(inject){
     let WDF = await fetch('https://spreadsheets.google.com/feeds/list/1fOLTeJmKnZ_agfjH-qYr9VO7KfkXlUA7rKYBv86gwIo/1/public/full?alt=json');
     let WDFData = await WDF.json();
-    // console.log(WDFData.feed.entry[inject].gsx$html.$t)
+    
     InjHere.innerHTML = WDFData.feed.entry[inject].gsx$html.$t
     setTimeout(function(){
         let Day1 = document.getElementById('Day1');
@@ -361,34 +313,34 @@ currentWeather(url_pt1+City+'&units=imperial'+apikey);
 
 Day1.addEventListener('click',function(){
     DayoWeekNum = 1
-    DaysOftheWeekForecast(1);
+    WeeDaySpecificInject(1);
     
 });
 Day2.addEventListener('click',function(){
     DayoWeekNum = 2
-    DaysOftheWeekForecast(1);
+    WeeDaySpecificInject(1);
     
 });
 Day3.addEventListener('click',function(){
     DayoWeekNum = 3
-    DaysOftheWeekForecast(1);
+    WeeDaySpecificInject(1);
     
 });
 Day4.addEventListener('click',function(){
     DayoWeekNum = 4
-    DaysOftheWeekForecast(1);
+    WeeDaySpecificInject(1);
     
 });
 Day5.addEventListener('click',function(){
     DayoWeekNum = 5
-    DaysOftheWeekForecast(1);
+    WeeDaySpecificInject(1);
     
 });
     
     }, 500);
 }
 
-// .text (use this to inject html code)
+
 
 
 favBTN.addEventListener('click',function(e){
@@ -437,7 +389,7 @@ function createFavBtn(cityName){
         searchBar.value = "";
     currentWeather(url_pt1+City+'&units=imperial'+apikey);
     if (cityText.innerText != LastCitySearched.toUpperCase()){
-        WeeklyForecast(0);
+        WeeklyForecastInject(0);
     }
     })
     Column.appendChild(cityText);
@@ -466,7 +418,7 @@ if( NFO != "" || NFO != null)
             searchBar.value = "";
             currentWeather(url_pt1+City+'&units=imperial'+apikey);
                 if (cityText.innerText != LastCitySearched.toUpperCase()){
-                    WeeklyForecast(0);
+                    WeeklyForecastInject(0);
                 }
         })
         
